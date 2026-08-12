@@ -12,12 +12,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Quicksand:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 </head>
 
-
 <body>
+
+    <!-- scroll progress -->
+    <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- ambient petals live here -->
+    <div class="petal-field" id="petalField" aria-hidden="true"></div>
 
     <!-- =========================
          MUSIC
@@ -27,11 +34,14 @@
         <source src="music/song.mp3" type="audio/mpeg">
     </audio>
 
-    <button class="music-btn" onclick="toggleMusic()" id="musicButton">
-        🎵
+    <button class="music-btn" onclick="toggleMusic()" id="musicButton" aria-label="Play background music">
+        <span class="music-icon" id="musicIcon">🎵</span>
+        <span class="eq" id="musicEq" aria-hidden="true">
+            <i></i><i></i><i></i>
+        </span>
     </button>
 
-
+    <button class="top-btn" id="topBtn" onclick="scrollToTop()" aria-label="Back to top">🌸</button>
 
     <!-- =========================
          HERO
@@ -46,32 +56,34 @@
 
         <div class="hero-content">
 
-            <p class="small-title">
-                A LITTLE SOMETHING FOR
-            </p>
+            <p class="small-title">A LITTLE SOMETHING FOR</p>
 
             <h1>Skye</h1>
 
-            <div class="divider">
-                ♡
-            </div>
+            <div class="divider">♡</div>
 
             <p class="hero-message">
-
                 A little corner of the internet made especially
                 to remember one very special day.
-
             </p>
 
-            <button class="start-btn" onclick="scrollToMemories()">
-                Open Your Gift ♡
-            </button>
+            <div class="gift-stage">
+                <div class="gift-box" id="giftBox" role="button" tabindex="0" aria-label="Open your gift">
+                    <div class="gift-shadow"></div>
+                    <div class="gift-base">
+                        <div class="gift-ribbon-v"></div>
+                    </div>
+                    <div class="gift-lid">
+                        <div class="gift-ribbon-h"></div>
+                    </div>
+                    <div class="gift-bow">🎀</div>
+                </div>
+                <p class="gift-label" id="giftLabel">tap the gift to open ♡</p>
+            </div>
 
         </div>
 
     </section>
-
-
 
     <!-- =========================
          INTRODUCTION
@@ -81,58 +93,33 @@
 
         <div class="section-container">
 
-            <p class="section-label">
-                A SPECIAL DAY
-            </p>
+            <p class="section-label" data-reveal>A SPECIAL DAY</p>
 
-            <h2>
-                For a very special girl 💜
-            </h2>
+            <h2 data-reveal>For a very special girl 💜</h2>
 
-            <p class="intro-text">
-
+            <p class="intro-text" data-reveal>
                 Dear Skye,
-
                 <br><br>
-
                 Today is a very special day because you made
                 a beautiful decision to dedicate yourself to Jehovah.
-
                 <br><br>
-
                 This little website was made just for you,
                 so you can keep the memories of this day close
                 to your heart.
-
             </p>
 
-
-            <div class="verse-card">
-
-                <div class="verse-icon">
-                    📖
-                </div>
-
+            <div class="verse-card" data-reveal>
+                <div class="verse-icon">📖</div>
                 <p class="verse">
-
-                    “Remember your Grand Creator in the days
-                    of your youth.”
-
+                    "Remember your Grand Creator in the days
+                    of your youth."
                 </p>
-
-                <p class="verse-reference">
-
-                    — Ecclesiastes 12:1
-
-                </p>
-
+                <p class="verse-reference">— Ecclesiastes 12:1</p>
             </div>
 
         </div>
 
     </section>
-
-
 
     <!-- =========================
          MAIN PHOTO GALLERY
@@ -142,31 +129,26 @@
 
         <div class="section-container">
 
-            <p class="section-label">
-                MEMORIES
-            </p>
+            <p class="section-label" data-reveal>MEMORIES</p>
 
-            <h2>
-                Your Special Day 📸
-            </h2>
+            <h2 data-reveal>Your Special Day 📸</h2>
 
-            <p class="section-description">
+            <p class="section-description" data-reveal>
                 Some little moments from a very big day.
             </p>
 
-
             <div class="photo-grid">
 
-                <div class="memory-photo">
-                    <img src="images/skye1.jpg" alt="Skye">
+                <div class="memory-photo" data-reveal>
+                    <img src="images/skye1.jpg" alt="Skye" data-lightbox data-caption="Skye">
                 </div>
 
-                <div class="memory-photo">
-                    <img src="images/skye2.jpg" alt="Skye">
+                <div class="memory-photo" data-reveal>
+                    <img src="images/skye2.jpg" alt="Skye" data-lightbox data-caption="Skye">
                 </div>
 
-                <div class="memory-photo">
-                    <img src="images/skye3.jpg" alt="Skye">
+                <div class="memory-photo" data-reveal>
+                    <img src="images/skye3.jpg" alt="Skye" data-lightbox data-caption="Skye">
                 </div>
 
             </div>
@@ -174,70 +156,6 @@
         </div>
 
     </section>
-
-
-
-    <!-- =========================
-         BEFORE THE BIG DAY
-    ========================== -->
-
-    <section class="photo-story">
-
-        <div class="section-container">
-
-            <p class="section-label">
-                THE LITTLE MOMENTS
-            </p>
-
-            <h2>
-                Before the Big Day 🌷
-            </h2>
-
-            <p class="section-description">
-
-                All the little moments leading up to such
-                a beautiful day.
-
-            </p>
-
-
-            <div class="photo-grid">
-
-                <div class="memory-photo">
-                    <img src="images/before1.jpg" alt="Skye">
-                    <div class="photo-caption">
-                        A little moment ♡
-                    </div>
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/before2.jpg" alt="Skye">
-                    <div class="photo-caption">
-                        Getting ready ✨
-                    </div>
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/before3.jpg" alt="Skye">
-                    <div class="photo-caption">
-                        Almost time 🌸
-                    </div>
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/before4.jpg" alt="Skye">
-                    <div class="photo-caption">
-                        One more picture! 📸
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
 
     <!-- =========================
          BAPTISM DAY
@@ -247,42 +165,35 @@
 
         <div class="section-container">
 
-            <p class="section-label">
-                THE SPECIAL DAY
-            </p>
+            <p class="section-label" data-reveal>THE SPECIAL DAY</p>
 
-            <h2>
-                The Day You Got Baptized 💜
-            </h2>
+            <h2 data-reveal>The Day You Got Baptized 💜</h2>
 
-            <p class="section-description">
-
+            <p class="section-description" data-reveal>
                 A day filled with happiness, love,
                 and beautiful memories.
-
             </p>
-
 
             <div class="photo-grid large-grid">
 
-                <div class="memory-photo tall">
-                    <img src="images/baptism1.jpg" alt="Skye baptism">
+                <div class="memory-photo tall" data-reveal>
+                    <img src="images/baptism1.jpg" alt="Skye baptism" data-lightbox data-caption="Skye's baptism">
                 </div>
 
-                <div class="memory-photo">
-                    <img src="images/baptism2.jpg" alt="Skye baptism">
+                <div class="memory-photo" data-reveal>
+                    <img src="images/baptism2.jpg" alt="Skye baptism" data-lightbox data-caption="Skye's baptism">
                 </div>
 
-                <div class="memory-photo">
-                    <img src="images/baptism3.jpg" alt="Skye baptism">
+                <div class="memory-photo" data-reveal>
+                    <img src="images/baptism3.jpg" alt="Skye baptism" data-lightbox data-caption="Skye's baptism">
                 </div>
 
-                <div class="memory-photo">
-                    <img src="images/baptism4.jpg" alt="Skye baptism">
+                <div class="memory-photo" data-reveal>
+                    <img src="images/baptism4.jpg" alt="Skye baptism" data-lightbox data-caption="Skye's baptism">
                 </div>
 
-                <div class="memory-photo">
-                    <img src="images/baptism5.jpg" alt="Skye baptism">
+                <div class="memory-photo" data-reveal>
+                    <img src="images/baptism5.jpg" alt="Skye baptism" data-lightbox data-caption="Skye's baptism">
                 </div>
 
             </div>
@@ -290,8 +201,6 @@
         </div>
 
     </section>
-
-
 
     <!-- =========================
          FAMILY
@@ -301,55 +210,29 @@
 
         <div class="section-container">
 
-            <p class="section-label">
-                WITH THE PEOPLE YOU LOVE
-            </p>
+            <p class="section-label" data-reveal>WITH THE PEOPLE YOU LOVE</p>
 
-            <h2>
-                Surrounded by Love 💕
-            </h2>
+            <h2 data-reveal>Surrounded by Love 💕</h2>
 
-            <p class="section-description">
-
+            <p class="section-description" data-reveal>
                 Because special days are even more special
                 when shared with the people who love you.
-
             </p>
-
 
             <div class="photo-grid">
 
-                <div class="memory-photo">
-                    <img src="images/family1.jpg" alt="Family">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/family2.jpg" alt="Family">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/family3.jpg" alt="Family">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/family4.jpg" alt="Family">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/family5.jpg" alt="Family">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/family6.jpg" alt="Family">
-                </div>
+                <div class="memory-photo" data-reveal><img src="images/family1.jpg" alt="Family" data-lightbox data-caption="Family"></div>
+                <div class="memory-photo" data-reveal><img src="images/family2.jpg" alt="Family" data-lightbox data-caption="Family"></div>
+                <div class="memory-photo" data-reveal><img src="images/family3.jpg" alt="Family" data-lightbox data-caption="Family"></div>
+                <div class="memory-photo" data-reveal><img src="images/family4.jpg" alt="Family" data-lightbox data-caption="Family"></div>
+                <div class="memory-photo" data-reveal><img src="images/family5.jpg" alt="Family" data-lightbox data-caption="Family"></div>
+                <div class="memory-photo" data-reveal><img src="images/family6.jpg" alt="Family" data-lightbox data-caption="Family"></div>
 
             </div>
 
         </div>
 
     </section>
-
-
 
     <!-- =========================
          HAPPY MEMORIES
@@ -359,48 +242,24 @@
 
         <div class="section-container">
 
-            <p class="section-label">
-                HAPPY MEMORIES
-            </p>
+            <p class="section-label" data-reveal>HAPPY MEMORIES</p>
 
-            <h2>
-                Smiles, Hugs & Everything In Between 🌸
-            </h2>
-
+            <h2 data-reveal>Smiles, Hugs & Everything In Between 🌸</h2>
 
             <div class="photo-grid">
 
-                <div class="memory-photo">
-                    <img src="images/happy1.jpg" alt="Happy memory">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/happy2.jpg" alt="Happy memory">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/happy3.jpg" alt="Happy memory">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/happy4.jpg" alt="Happy memory">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/happy5.jpg" alt="Happy memory">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/happy6.jpg" alt="Happy memory">
-                </div>
+                <div class="memory-photo" data-reveal><img src="images/happy1.jpg" alt="Happy memory" data-lightbox data-caption="Happy memory"></div>
+                <div class="memory-photo" data-reveal><img src="images/happy2.jpg" alt="Happy memory" data-lightbox data-caption="Happy memory"></div>
+                <div class="memory-photo" data-reveal><img src="images/happy3.jpg" alt="Happy memory" data-lightbox data-caption="Happy memory"></div>
+                <div class="memory-photo" data-reveal><img src="images/happy4.jpg" alt="Happy memory" data-lightbox data-caption="Happy memory"></div>
+                <div class="memory-photo" data-reveal><img src="images/happy5.jpg" alt="Happy memory" data-lightbox data-caption="Happy memory"></div>
+                <div class="memory-photo" data-reveal><img src="images/happy6.jpg" alt="Happy memory" data-lightbox data-caption="Happy memory"></div>
 
             </div>
 
         </div>
 
     </section>
-
-
 
     <!-- =========================
          SKYE PHOTO COLLECTION
@@ -410,62 +269,30 @@
 
         <div class="section-container">
 
-            <p class="section-label">
-                JUST SKYE BEING SKYE
-            </p>
+            <p class="section-label" data-reveal>JUST SKYE BEING SKYE</p>
 
-            <h2>
-                And Of Course... You! 🥹💜
-            </h2>
+            <h2 data-reveal>And Of Course... You! 🥹💜</h2>
 
-            <p class="section-description">
-
+            <p class="section-description" data-reveal>
                 Because we need a whole section dedicated to you!
-
             </p>
-
 
             <div class="photo-grid portrait-grid">
 
-                <div class="memory-photo">
-                    <img src="images/skye4.jpg" alt="Skye">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/skye5.jpg" alt="Skye">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/skye6.jpg" alt="Skye">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/skye7.jpg" alt="Skye">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/skye8.jpg" alt="Skye">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/skye9.jpg" alt="Skye">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/skye10.jpg" alt="Skye">
-                </div>
-
-                <div class="memory-photo">
-                    <img src="images/skye11.jpg" alt="Skye">
-                </div>
+                <div class="memory-photo" data-reveal><img src="images/skye4.jpg" alt="Skye" data-lightbox data-caption="Skye"></div>
+                <div class="memory-photo" data-reveal><img src="images/skye5.jpg" alt="Skye" data-lightbox data-caption="Skye"></div>
+                <div class="memory-photo" data-reveal><img src="images/skye6.jpg" alt="Skye" data-lightbox data-caption="Skye"></div>
+                <div class="memory-photo" data-reveal><img src="images/skye7.jpg" alt="Skye" data-lightbox data-caption="Skye"></div>
+                <div class="memory-photo" data-reveal><img src="images/skye8.jpg" alt="Skye" data-lightbox data-caption="Skye"></div>
+                <div class="memory-photo" data-reveal><img src="images/skye9.jpg" alt="Skye" data-lightbox data-caption="Skye"></div>
+                <div class="memory-photo" data-reveal><img src="images/skye10.jpg" alt="Skye" data-lightbox data-caption="Skye"></div>
+                <div class="memory-photo" data-reveal><img src="images/skye11.jpg" alt="Skye" data-lightbox data-caption="Skye"></div>
 
             </div>
 
         </div>
 
     </section>
-
-
 
     <!-- =========================
          VIDEO
@@ -475,32 +302,20 @@
 
         <div class="section-container">
 
-            <p class="section-label">
-                WATCH THE MEMORIES
-            </p>
+            <p class="section-label" data-reveal>WATCH THE MEMORIES</p>
 
-            <h2>
-                A Day to Remember 🎥
-            </h2>
+            <h2 data-reveal>A Day to Remember 🎥</h2>
 
-
-            <div class="video-wrapper">
-
+            <div class="video-wrapper" data-reveal>
                 <video controls poster="images/skye1.jpg">
-
                     <source src="videos/baptism.mp4" type="video/mp4">
-
                     Your browser does not support video playback.
-
                 </video>
-
             </div>
 
         </div>
 
     </section>
-
-
 
     <!-- =========================
          PERSONAL MESSAGE
@@ -510,71 +325,60 @@
 
         <div class="section-container">
 
-            <p class="section-label">
-                A MESSAGE FOR YOU
-            </p>
+            <p class="section-label" data-reveal>A MESSAGE FOR YOU</p>
 
-            <h2>
-                Dear Skye, 💌
-            </h2>
+            <h2 data-reveal>Dear Skye, 💌</h2>
 
+            <div class="envelope" id="envelope" data-reveal>
 
-            <div class="letter">
+                <button class="wax-seal" id="waxSeal" aria-label="Open the letter">
+                    <span>♡</span>
+                </button>
 
-                <p>
-                    Congratulations on your baptism! 🥹💜
-                </p>
+                <p class="envelope-hint" id="envelopeHint">tap the seal to read your letter</p>
 
-                <p>
+                <div class="letter" id="letter">
 
-                    Even though you're still young, you've already
-                    made such a beautiful decision. Choosing to love
-                    and serve Jehovah is something you can always
-                    be proud of.
+                    <p>Congratulations on your baptism! 🥹💜</p>
 
-                </p>
+                    <p>
+                        Even though you're still young, you've already
+                        made such a beautiful decision. Choosing to love
+                        and serve Jehovah is something you can always
+                        be proud of.
+                    </p>
 
-                <p>
+                    <p>
+                        Keep learning about Jehovah, keep praying to him,
+                        and keep being the sweet and wonderful girl
+                        that you are.
+                    </p>
 
-                    Keep learning about Jehovah, keep praying to him,
-                    and keep being the sweet and wonderful girl
-                    that you are.
+                    <p>
+                        Whenever things get difficult, remember that
+                        Jehovah loves you and is always ready to listen
+                        to your prayers.
+                    </p>
 
-                </p>
+                    <p>
+                        I hope that whenever you visit this little website,
+                        you'll remember how happy everyone was for you
+                        on this special day.
+                    </p>
 
-                <p>
+                    <p class="signature">
+                        With lots of love, ♡
+                        <br>
+                        <strong>Your friend</strong>
+                    </p>
 
-                    Whenever things get difficult, remember that
-                    Jehovah loves you and is always ready to listen
-                    to your prayers.
-
-                </p>
-
-                <p>
-
-                    I hope that whenever you visit this little website,
-                    you'll remember how happy everyone was for you
-                    on this special day.
-
-                </p>
-
-
-                <p class="signature">
-
-                    With lots of love, ♡
-                    <br>
-
-                    <strong>Your friend</strong>
-
-                </p>
+                </div>
 
             </div>
 
         </div>
 
     </section>
-
-
 
     <!-- =========================
          CLOSING
@@ -584,58 +388,47 @@
 
         <div class="closing-content">
 
-            <div class="closing-flower">
-                🌷
-            </div>
+            <div class="closing-flower" data-reveal>🌷</div>
 
-            <h2>
-                Congratulations, Skye!
-            </h2>
+            <h2 data-reveal>Congratulations, Skye!</h2>
 
-            <p>
-
+            <p data-reveal>
                 May Jehovah always guide you,
                 protect you, and help you grow
                 into the wonderful person you're meant to be.
-
             </p>
 
-            <div class="heart">
-                ♡
-            </div>
+            <div class="heart" id="closingHeart" data-reveal>♡</div>
 
-            <p class="small-closing">
-
+            <p class="small-closing" data-reveal>
                 This little corner will always be here
                 whenever you want to remember this special day.
-
             </p>
 
         </div>
 
     </section>
 
-
-
     <!-- =========================
          FOOTER
     ========================== -->
 
     <footer>
-
-        <p>
-            Made with love for Skye 💜
-        </p>
-
-        <p class="footer-small">
-
-            A special memory • A beautiful beginning
-
-        </p>
-
+        <p>Made with love for Skye 💜</p>
+        <p class="footer-small">A special memory • A beautiful beginning</p>
     </footer>
 
+    <!-- =========================
+         LIGHTBOX
+    ========================== -->
 
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
+        <img class="lightbox-img" id="lightboxImg" alt="">
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next photo">›</button>
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
 
     <script src="script.js"></script>
 
